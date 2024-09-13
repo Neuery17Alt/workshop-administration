@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nuxt-nginx:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3001:3001"
+    environment:
+      - FRONTEND_API=http://backend:8000/api/v1
