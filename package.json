@@ -21,6 +21,9 @@
     "@nuxt/icon": "^1.5.1",
     "@nuxtjs/i18n": "^8.5.4",
     "@nuxtjs/tailwindcss": "^6.12.1",
-    "@pinia/nuxt": "^0.5.4"
+    "@pinia/nuxt": "^0.5.4",
+    "supabase": "^1.192.5",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
