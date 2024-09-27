@@ -1,5 +1,5 @@
 export type Workshop = {
-    uuid: string
+    uuid: string | null
     created_at: string
     name: string
     description: string | null
