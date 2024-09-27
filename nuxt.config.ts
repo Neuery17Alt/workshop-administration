@@ -10,12 +10,12 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: [
       "@pinia/nuxt",
-      "@nuxt/icon",
       "@nuxt/fonts",
       "@nuxtjs/i18n",
-      "@nuxtjs/tailwindcss",
       "@nuxtjs/supabase",
       "@nuxt/eslint",
+      "@nuxtjs/google-fonts",
+      "@nuxt/ui",
     ],
     components: [
         {
