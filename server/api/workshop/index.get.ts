@@ -6,7 +6,13 @@ export default defineEventHandler(async (event) => {
     const supabase = await serverSupabaseClient<Database>(event)
     const {data: workshops} = await supabase
         .from("Workshop")
-        .select("*")
+        .select(`
+        *, 
+        Student(*),
+        Category(*), 
+        Teacher(*),
+        Subject(*)
+        `)
         .returns<Workshop>()
 
     if (!workshops) {

@@ -39,4 +39,14 @@ export default defineNuxtConfig({
         serviceKey: "",
         redirect: false,
     },
+    postcss: {
+        plugins: {
+            "postcss-import": {},
+            "tailwindcss/nesting": {},
+            tailwindcss: {},
+            autoprefixer: {},
+        },
+    },
+
+    eslint: {},
 })

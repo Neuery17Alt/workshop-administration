@@ -50,7 +50,9 @@ create table
     enddate     timestamp without time zone null,
     is_active   boolean                  not null,
     uuid        uuid                     not null default gen_random_uuid(),
-    constraint Workshop_pkey primary key (uuid)
+    subject_id  uuid null,
+    constraint workshop_pkey primary key (uuid),
+    constraint public_Workshop_subject_id_fkey foreign key (subject_id) references "Subject" (uuid) on update cascade on delete cascade
 ) tablespace pg_default;
 
 

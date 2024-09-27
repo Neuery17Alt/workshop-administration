@@ -26,15 +26,19 @@ VALUES ('John', 'Doe', 'JD'),
        ('Mark', 'Johnson', 'MJ'),
        ('Sarah', 'Brown', 'SB');
 
--- Insert into Workshop table
-INSERT INTO public."Workshop" (name, description, startdate, enddate, is_active)
+-- Insert into Workshop table with subject_id
+INSERT INTO public."Workshop" (name, description, startdate, enddate, is_active, subject_id)
 VALUES ('Python Programming Basics', 'Introduction to Python for beginners', '2024-10-01 10:00', '2024-12-01 12:00',
-        TRUE),
+        TRUE,
+        (SELECT uuid FROM public."Subject" WHERE name = 'Programming')),
        ('Digital Art Workshop', 'Learn how to create digital illustrations', '2024-11-15 09:00', '2024-12-15 16:00',
-        TRUE),
+        TRUE,
+        (SELECT uuid FROM public."Subject" WHERE name = 'Art')),
        ('Music Theory Fundamentals', 'Understanding the basics of music theory', '2024-09-01 13:00', '2024-09-30 15:00',
-        FALSE),
-       ('Advanced Physics', 'Exploring advanced concepts in physics', '2024-10-05 08:00', NULL, TRUE);
+        FALSE,
+        (SELECT uuid FROM public."Subject" WHERE name = 'Music')),
+       ('Advanced Physics', 'Exploring advanced concepts in physics', '2024-10-05 08:00', NULL, TRUE,
+        (SELECT uuid FROM public."Subject" WHERE name = 'Physics'));
 
 -- Insert into Workshop_Category table
 INSERT INTO public."Workshop_Category" (category_id, workshop_id)
