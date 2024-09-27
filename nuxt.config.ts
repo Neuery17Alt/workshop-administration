@@ -10,12 +10,12 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: [
       "@pinia/nuxt",
-      "@nuxt/icon",
       "@nuxt/fonts",
       "@nuxtjs/i18n",
-      "@nuxtjs/tailwindcss",
       "@nuxtjs/supabase",
       "@nuxt/eslint",
+      "@nuxt/ui",
+      "@nuxtjs/google-fonts",
     ],
     components: [
         {
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
             weights: [400],
             styles: ["normal", "italic"],
         },
-        families: [{ name: "Inter", provider: "google" }],
+        families: [{name: "Inter", provider: "google"}],
     },
     colorMode: {
         classSuffix: "",
