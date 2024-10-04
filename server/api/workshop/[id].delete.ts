@@ -6,13 +6,28 @@ export default defineEventHandler(async (event) => {
     const uuid : string = getRouterParam(event, "id")
     const supabase = await serverSupabaseClient<Database>(event)
 
-    const { error } = await supabase
-        .from('Teacher')
-        .delete()
-        .eq('uuid', uuid)
+    try {
+        await supabase
+            .from("Workshop_Category")
+            .delete()
+            .eq("workshop_id", uuid)
 
+        await supabase
+            .from("Workshop_Teacher")
+            .delete()
+            .eq("workshop_id", uuid)
 
-    if (error) {
+        await supabase
+            .from("Subscription")
+            .delete()
+            .eq("workshop_id", uuid)
+
+        await supabase
+            .from('Workshop')
+            .delete()
+            .eq('uuid', uuid)
+
+    } catch (error) {
         throw createError({ message: error.message, statusCode: 500 })
     }
 })
