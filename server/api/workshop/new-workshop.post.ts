@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
         start_date: workshop.start_date,
         end_date: workshop.end_date,
         is_active: workshop.is_active,
-        subject_id: workshop.Subject[0].uuid,
+        subject_id: workshop.Subject[0].uuid ?? null,
     }).select().single().returns<Workshop>()
 
     await Promise.all(
