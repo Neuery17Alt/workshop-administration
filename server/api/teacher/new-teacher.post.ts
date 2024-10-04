@@ -4,7 +4,7 @@ import type {Database} from "@/types/supabase"
 export default defineEventHandler(async (event) => {
     const subject : { abbreviation: string, first_name: string, last_name: string } = await readBody<{ abbreviation: string, first_name: string, last_name: string }>(event)
     const supabase = await serverSupabaseClient<Database>(event)
-d
+
 
     const { error } = await supabase.from("Teacher").insert({
         abbreviation: subject.abbreviation,

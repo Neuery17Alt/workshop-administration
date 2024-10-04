@@ -27,7 +27,7 @@ VALUES ('John', 'Doe', 'JD'),
        ('Sarah', 'Brown', 'SB');
 
 -- Insert into Workshop table with subject_id
-INSERT INTO public."Workshop" (name, description, startdate, enddate, is_active, subject_id)
+INSERT INTO public."Workshop" (name, description, start_date, end_date, is_active, subject_id)
 VALUES ('Python Programming Basics', 'Introduction to Python for beginners', '2024-10-01 10:00', '2024-12-01 12:00',
         TRUE,
         (SELECT uuid FROM public."Subject" WHERE name = 'Programming')),
