@@ -14,8 +14,8 @@ export default defineNuxtConfig({
       "@nuxtjs/i18n",
       "@nuxtjs/supabase",
       "@nuxt/eslint",
-      "@nuxtjs/google-fonts",
       "@nuxt/ui",
+      "@nuxtjs/google-fonts",
     ],
     components: [
         {
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
             weights: [400],
             styles: ["normal", "italic"],
         },
-        families: [{ name: "Inter", provider: "google" }],
+        families: [{name: "Inter", provider: "google"}],
     },
     colorMode: {
         classSuffix: "",

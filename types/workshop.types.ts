@@ -1,14 +1,15 @@
 export type Workshop = {
-    uuid: string
+    uuid: string | null
     created_at: string
     name: string
     description: string | null
-    startdate: string
-    enddate: string | null
+    start_date: string
+    end_date: string | null
     is_active: boolean
-    subject: Subject
-    teachers: Teacher[]
-    students: Student[]
+    Subject: Subject
+    Teacher: Teacher[]
+    Student: Student[]
+    Category: Category[]
 }
 
 export type Subject = {
@@ -29,4 +30,10 @@ export type Student = {
     uuid: string
     created_at: string
     ldap_id: number
+}
+
+export type Category = {
+    uuid: string
+    created_at: string
+    name: string
 }
