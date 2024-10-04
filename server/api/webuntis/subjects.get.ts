@@ -9,6 +9,7 @@ export default defineEventHandler(async (event) => {
         )
 
         return data.json()
+
     } catch (error) {
         throw createError({message: error.message, statusCode: 500})
     }
