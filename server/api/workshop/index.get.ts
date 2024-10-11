@@ -20,16 +20,19 @@ export default defineEventHandler(async (event) => {
 
     await Promise.all(
         workshops.map(async (workshop) => {
-            const {data: days } = await supabase
-                .from("Day")
-                .select(`*`)
-                .eq("workshop_id", `${workshop.uuid}`)
-                .returns<Day[]>()
+                const {data: days} = await supabase
+                    .from("Day")
+                    .select(`*`)
+                    .eq("workshop_id", `${workshop.uuid}`)
+                    .returns<Day[]>()
 
-                modifiedWorkshops = {
-                    ...workshop,
-                    Day: days
-                }
+                modifiedWorkshops = [
+                    ...modifiedWorkshops,
+                    {
+                        ...workshop,
+                        Day: days
+                    }
+                ]
             }
         )
     )
