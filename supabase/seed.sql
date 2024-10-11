@@ -1,74 +1,78 @@
--- Insert into Category table
-INSERT INTO public."Category" (name)
-VALUES ('Technology'),
-       ('Art'),
-       ('Science'),
-       ('Music');
+-- SEEDING DATA INTO CATEGORY
+INSERT INTO public."Category" (name, color)
+VALUES ('Technology', 'blue'),
+       ('Arts', 'red'),
+       ('Science', 'green'),
+       ('Sports', 'yellow');
 
--- Insert into Subject table
+-- SEEDING DATA INTO SUBJECT
 INSERT INTO public."Subject" (name)
 VALUES ('Mathematics'),
        ('Physics'),
-       ('Literature'),
-       ('Programming');
+       ('Painting'),
+       ('Football');
 
--- Insert into Student table
+-- SEEDING DATA INTO STUDENT
 INSERT INTO public."Student" (ldap_id)
-VALUES (1001),
-       (1002),
-       (1003),
-       (1004);
+VALUES (10001),
+       (10002),
+       (10003),
+       (10004);
 
--- Insert into Teacher table
+-- SEEDING DATA INTO TEACHER
 INSERT INTO public."Teacher" (first_name, last_name, abbreviation)
 VALUES ('John', 'Doe', 'JD'),
-       ('Alice', 'Smith', 'AS'),
-       ('Mark', 'Johnson', 'MJ'),
-       ('Sarah', 'Brown', 'SB');
+       ('Jane', 'Smith', 'JS'),
+       ('Emily', 'Clark', 'EC'),
+       ('Michael', 'Johnson', 'MJ');
 
--- Insert into Workshop table with subject_id
-INSERT INTO public."Workshop" (name, description, start_date, end_date, is_active, subject_id)
-VALUES ('Python Programming Basics', 'Introduction to Python for beginners', '2024-10-01 10:00', '2024-12-01 12:00',
-        TRUE,
-        (SELECT uuid FROM public."Subject" WHERE name = 'Programming')),
-       ('Digital Art Workshop', 'Learn how to create digital illustrations', '2024-11-15 09:00', '2024-12-15 16:00',
-        TRUE,
-        (SELECT uuid FROM public."Subject" WHERE name = 'Art')),
-       ('Music Theory Fundamentals', 'Understanding the basics of music theory', '2024-09-01 13:00', '2024-09-30 15:00',
-        FALSE,
-        (SELECT uuid FROM public."Subject" WHERE name = 'Music')),
-       ('Advanced Physics', 'Exploring advanced concepts in physics', '2024-10-05 08:00', NULL, TRUE,
-        (SELECT uuid FROM public."Subject" WHERE name = 'Physics'));
+-- SEEDING DATA INTO WORKSHOP
+INSERT INTO public."Workshop" (name, description, subject_id)
+VALUES ('Intro to AI', 'An introductory workshop to Artificial Intelligence',
+        (SELECT uuid FROM public."Subject" WHERE name = 'Mathematics')),
+       ('Modern Physics', 'Exploring the world of modern physics',
+        (SELECT uuid FROM public."Subject" WHERE name = 'Physics')),
+       ('Abstract Painting', 'Discover the techniques of abstract art',
+        (SELECT uuid FROM public."Subject" WHERE name = 'Painting')),
+       ('Football Basics', 'Learn the basics of football techniques',
+        (SELECT uuid FROM public."Subject" WHERE name = 'Football'));
 
--- Insert into Workshop_Category table
+-- SEEDING DATA INTO WORKSHOP_CATEGORY
 INSERT INTO public."Workshop_Category" (category_id, workshop_id)
 VALUES ((SELECT uuid FROM public."Category" WHERE name = 'Technology'),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Python Programming Basics')),
-       ((SELECT uuid FROM public."Category" WHERE name = 'Art'),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Digital Art Workshop')),
-       ((SELECT uuid FROM public."Category" WHERE name = 'Music'),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Music Theory Fundamentals')),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Intro to AI')),
        ((SELECT uuid FROM public."Category" WHERE name = 'Science'),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Advanced Physics'));
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Modern Physics')),
+       ((SELECT uuid FROM public."Category" WHERE name = 'Arts'),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Abstract Painting')),
+       ((SELECT uuid FROM public."Category" WHERE name = 'Sports'),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Football Basics'));
 
--- Insert into Subscription table
+-- SEEDING DATA INTO SUBSCRIPTION
 INSERT INTO public."Subscription" (student_id, workshop_id)
-VALUES ((SELECT uuid FROM public."Student" WHERE ldap_id = 1001),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Python Programming Basics')),
-       ((SELECT uuid FROM public."Student" WHERE ldap_id = 1002),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Digital Art Workshop')),
-       ((SELECT uuid FROM public."Student" WHERE ldap_id = 1003),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Music Theory Fundamentals')),
-       ((SELECT uuid FROM public."Student" WHERE ldap_id = 1004),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Advanced Physics'));
+VALUES ((SELECT uuid FROM public."Student" WHERE ldap_id = 10001),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Intro to AI')),
+       ((SELECT uuid FROM public."Student" WHERE ldap_id = 10002),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Modern Physics')),
+       ((SELECT uuid FROM public."Student" WHERE ldap_id = 10003),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Abstract Painting')),
+       ((SELECT uuid FROM public."Student" WHERE ldap_id = 10004),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Football Basics'));
 
--- Insert into Workshop_Teacher table
+-- SEEDING DATA INTO WORKSHOP_TEACHER
 INSERT INTO public."Workshop_Teacher" (workshop_id, teacher_id)
-VALUES ((SELECT uuid FROM public."Workshop" WHERE name = 'Python Programming Basics'),
+VALUES ((SELECT uuid FROM public."Workshop" WHERE name = 'Intro to AI'),
         (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'JD')),
-       ((SELECT uuid FROM public."Workshop" WHERE name = 'Digital Art Workshop'),
-        (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'AS')),
-       ((SELECT uuid FROM public."Workshop" WHERE name = 'Music Theory Fundamentals'),
-        (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'MJ')),
-       ((SELECT uuid FROM public."Workshop" WHERE name = 'Advanced Physics'),
-        (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'SB'));
+       ((SELECT uuid FROM public."Workshop" WHERE name = 'Modern Physics'),
+        (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'JS')),
+       ((SELECT uuid FROM public."Workshop" WHERE name = 'Abstract Painting'),
+        (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'EC')),
+       ((SELECT uuid FROM public."Workshop" WHERE name = 'Football Basics'),
+        (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'MJ'));
+
+-- SEEDING DATA INTO DAY
+INSERT INTO public."Day" (start_time, end_time, workshop_id, date)
+VALUES ('10:00:00', '12:00:00', (SELECT uuid FROM public."Workshop" WHERE name = 'Intro to AI'), '2024-10-15'),
+       ('12:00:00', '14:00:00', (SELECT uuid FROM public."Workshop" WHERE name = 'Modern Physics'), '2024-10-16'),
+       ('09:00:00', '11:00:00', (SELECT uuid FROM public."Workshop" WHERE name = 'Abstract Painting'), '2024-10-17'),
+       ('16:00:00', '18:00:00', (SELECT uuid FROM public."Workshop" WHERE name = 'Football Basics'), '2024-10-18');
