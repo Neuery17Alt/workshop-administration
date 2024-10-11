@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="flex flex-wrap justify-center">
+  <div class="flex flex-wrap ">
     <slot />
   </div>
 </template>

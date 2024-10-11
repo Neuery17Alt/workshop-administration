@@ -15,7 +15,6 @@ export default defineNuxtConfig({
         "@nuxtjs/supabase",
         "@nuxt/eslint",
         "@nuxt/ui",
-        "@nuxtjs/google-fonts",
     ],
     components: [
         {
