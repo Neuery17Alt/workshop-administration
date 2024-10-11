@@ -3,13 +3,11 @@ export type Workshop = {
     created_at: string
     name: string
     description: string | null
-    start_date: string
-    end_date: string | null
-    is_active: boolean
     Subject: Subject
     Teacher: Teacher[]
     Student: Student[]
     Category: Category[]
+    Day: Day[]
 }
 
 export type Subject = {
@@ -36,4 +34,14 @@ export type Category = {
     uuid: string
     created_at: string
     name: string
+    color: string
+}
+
+export type Day = {
+    uuid: string
+    created_at: string
+    start_time: string
+    end_time: string
+    date: string
+    workshop_id: string
 }
