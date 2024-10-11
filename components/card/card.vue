@@ -8,7 +8,7 @@ defineProps<({
 </script>
 
 <template>
-  <div class="shadow-md mt-2 border rounded-lg p-6 drop-shadow-md hover:shadow-md transition-shadow duration-300 ease-in-out">
+  <div class="shadow-md mt-2 border rounded-lg p-6 drop-shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out">
     <top :teacher="teacher"/>
     <p class="text-4xl font-semibold tracking-tight w-full">Akustik und Singen</p>
     <div class="flex space-x-3 my-4">
