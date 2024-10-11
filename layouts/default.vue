@@ -4,7 +4,7 @@
 
 <template>
   <template>
-    <div class="default max-h-screen h-screen bg-gray-50 dark:bg-customPrimary-950 bg- p-2">
+    <div class="default h-calcScreen bg-gray-50 dark:bg-customPrimary-950 p-2">
       <slot />
     </div>
   </template>

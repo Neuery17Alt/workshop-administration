@@ -9,13 +9,13 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     devtools: {enabled: true},
     modules: [
-      "@pinia/nuxt",
-      "@nuxt/fonts",
-      "@nuxtjs/i18n",
-      "@nuxtjs/supabase",
-      "@nuxt/eslint",
-      "@nuxt/ui",
-      "@nuxtjs/google-fonts",
+        "@pinia/nuxt",
+        "@nuxt/fonts",
+        "@nuxtjs/i18n",
+        "@nuxtjs/supabase",
+        "@nuxt/eslint",
+        "@nuxt/ui",
+        "@nuxtjs/google-fonts",
     ],
     components: [
         {
@@ -30,11 +30,6 @@ export default defineNuxtConfig({
         },
         families: [{name: "Inter", provider: "google"}],
     },
-    colorMode: {
-        classSuffix: "",
-        preference: "system",
-        fallback: "light",
-    },
     supabase: {
         serviceKey: "",
         redirect: false,
@@ -46,6 +41,11 @@ export default defineNuxtConfig({
             tailwindcss: {},
             autoprefixer: {},
         },
+    },
+
+    colorMode: {
+        preference: 'system',
+        fallback: 'light',
     },
 
     eslint: {},
