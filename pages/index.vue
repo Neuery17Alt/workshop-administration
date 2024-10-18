@@ -9,7 +9,7 @@ const extended = ref(false)
     <div>
     <navbar @extend="extended = !extended"/>
     <div v-if="!extended">
-      <div v-for="workshop in workshops" class="mb-4">
+      <div v-for="workshop in workshops">
         <card :workshop="workshop"/>
         <!--:key="workshop.value.name-->
       </div>

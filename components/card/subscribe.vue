@@ -6,7 +6,6 @@ const subscribed = ref(false)
 
 <template>
   <div>
-
     <leave-button v-if="subscribed" @click="subscribed = !subscribed"/>
     <join-button v-if="!subscribed" @click="subscribed = !subscribed"/>
   </div>

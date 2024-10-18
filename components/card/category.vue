@@ -7,7 +7,7 @@ const props = defineProps<({
 </script>
 
 <template>
-  <UBadge :color="props.category.color" size="lg" variant="solid" class="text-black font-bold tracking-wide my-1 py-1 px-6 w-fit saturate-75 bg-opacity-80">
+  <UBadge :color="props.category.color" size="lg" variant="solid" class="text-black dark:text-white font-bold tracking-wide my-1 py-1 px-6 w-fit saturate-75 bg-opacity-80">
     {{ props.category.name }}
   </UBadge>
 </template>
