@@ -6,15 +6,14 @@ const extended = ref(false)
 </script>
 
 <template>
-  <div class="relative z-50">
+    <div>
     <navbar @extend="extended = !extended"/>
-  </div>
-  <div v-if="!extended" class="z-10 ">
-    <div v-for="workshop in workshops" class="mb-4">
-      <card :workshop="workshop"/>
-      <!--:key="workshop.value.name-->
+    <div v-if="!extended">
+      <div v-for="workshop in workshops" class="mb-4">
+        <card :workshop="workshop"/>
+        <!--:key="workshop.value.name-->
+      </div>
     </div>
-
   </div>
 
 </template>
