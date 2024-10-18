@@ -3,7 +3,6 @@ import type {Workshop} from "~/types/workshop.types";
 
 const {data: workshops}: Workshop[] = await useFetch("/api/workshop")
 const extended = ref(false)
-
 </script>
 
 <template>
