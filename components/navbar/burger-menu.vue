@@ -12,8 +12,8 @@ withDefaults(
 </script>
 
 <template>
-  <x-container class="flex flex-wrap">
-    <UBadge class="h-10 w-10" color="blue" variant="soft">
+  <x-container class="flex flex-wrap ">
+    <UBadge class="h-10 w-10 my-auto" color="blue" variant="soft">
       <Icon class="w-full h-3/4 mb-auto mt-auto" :name="icon"/>
     </UBadge>
   </x-container>

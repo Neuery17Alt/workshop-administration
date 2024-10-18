@@ -1,10 +1,11 @@
 <script setup lang="ts">
 
+
 </script>
 
 <template>
-  <template>
-    <div class="default h-calcScreen bg-gray-50 dark:bg-customPrimary-950 p-2">
+  <template class="bg-gray-50">
+    <div class="h-fit default dark:bg-customPrimary-950 p-2">
       <slot />
     </div>
   </template>

@@ -94,7 +94,7 @@ module.exports = {
                 "collapsible-up": "collapsible-up 0.2s ease-in-out",
             },
             height: {
-                'calcScreen': '98vh',
+                'calcScreen': '97vh',
             }
         },
     },
