@@ -3,6 +3,7 @@ export type Workshop = {
     created_at: string
     name: string
     description: string | null
+    max_member: number
     Subject: Subject
     Teacher: Teacher[]
     Student: Student[]
