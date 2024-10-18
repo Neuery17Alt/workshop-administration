@@ -1,15 +1,21 @@
 <script setup lang="ts">
-const {data: teacher} = useFetch("/api/teacher/b464ad9a-1375-4e1d-8687-a113236761da")
+import type {Workshop} from "~/types/workshop.types";
+
+const {data: workshops}: Workshop[] = await useFetch("/api/workshop")
 const extended = ref(false)
+
 </script>
 
-<template >
+<template>
   <div class="relative z-50">
-    <navbar @extend="extended = !extended" />
+    <navbar @extend="extended = !extended"/>
   </div>
-  <div v-if="!extended" class=" z-10 bg-white">
-    <card :teacher="teacher"/>
-    <card :teacher="teacher"/>
+  <div v-if="!extended" class="z-10 ">
+    <div v-for="workshop in workshops" class="mb-4">
+      <card :workshop="workshop"/>
+      <!--:key="workshop.value.name-->
+    </div>
+
   </div>
 
 </template>

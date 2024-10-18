@@ -1,16 +1,14 @@
 <script setup lang="ts">
+import type {Category} from "~/types/workshop.types";
 
-defineProps<({
-  category: {
-    type: string,
-    color: string
-  }
+const props = defineProps<({
+  category: Category
 })>()
 </script>
 
 <template>
-  <UBadge :color="category.color" size="lg" variant="solid" class="text-black tracking-wide py-1 px-6 w-fit saturate-75 bg-opacity-80">
-    {{ category.type }}
+  <UBadge :color="props.category.color" size="lg" variant="solid" class="text-black font-bold tracking-wide my-1 py-1 px-6 w-fit saturate-75 bg-opacity-80">
+    {{ props.category.name }}
   </UBadge>
 </template>
 
