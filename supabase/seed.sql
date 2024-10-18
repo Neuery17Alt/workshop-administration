@@ -3,14 +3,17 @@ INSERT INTO public."Category" (name, color)
 VALUES ('Kreativer Denksport', 'blue'),
        ('Musik', 'red'),
        ('Bewegung', 'emerald'),
-       ('Sport', 'yellow');
+       ('Sport', 'yellow'),
+       ('Technologie', 'purple'),
+       ('Kunst', 'pink');
 
 -- SEEDING DATA INTO SUBJECT
 INSERT INTO public."Subject" (name)
 VALUES ('SEW'),
        ('D'),
        ('AM'),
-       ('NW-BIO');
+       ('NW-BIO'),
+       ('MAT');
 
 -- SEEDING DATA INTO STUDENT
 INSERT INTO public."Student" (ldap_id)
@@ -30,14 +33,23 @@ VALUES ('Heinz', 'Schweiger', 'SCHH'),
 INSERT INTO public."Workshop" (name, description, subject_id)
 VALUES ('Akustik und Singen', '',
         (SELECT uuid FROM public."Subject" WHERE name = 'AM')),
-       ('Programmieren', 'In diesem Workshop lernst du, wie man durch Einsatz einer Game-Engine mit der Sprache C# einfache 3D-Spiele entwickeln kann.',
+       ('Programmieren',
+        'In diesem Workshop lernst du, wie man durch Einsatz einer Game-Engine mit der Sprache C# einfache 3D-Spiele entwickeln kann.',
         (SELECT uuid FROM public."Subject" WHERE name = 'SEW')),
        ('Klettern', '',
         (SELECT uuid FROM public."Subject" WHERE name = 'D')),
        ('Orientalischer Tanz', '',
         (SELECT uuid FROM public."Subject" WHERE name = 'NW-BIO')),
        ('Praktikum', '',
-        (SELECT uuid FROM public."Subject" WHERE name = 'SEW'));
+        (SELECT uuid FROM public."Subject" WHERE name = 'SEW')),
+       ('Digitale Kunst', 'Erforsche digitale Kunsttechniken',
+        (SELECT uuid FROM public."Subject" WHERE name = 'MAT')),
+       ('Robotik', 'Lerne Roboter zu bauen und zu programmieren',
+        (SELECT uuid FROM public."Subject" WHERE name = 'SEW')),
+       ('3D Modellierung', 'Modelliere Objekte in 3D-Software',
+        (SELECT uuid FROM public."Subject" WHERE name = 'MAT')),
+       ('Fotografie', 'Entdecke die Kunst der Fotografie',
+        (SELECT uuid FROM public."Subject" WHERE name = 'D'));
 
 -- SEEDING DATA INTO WORKSHOP_CATEGORY
 INSERT INTO public."Workshop_Category" (category_id, workshop_id)
@@ -48,7 +60,19 @@ VALUES ((SELECT uuid FROM public."Category" WHERE name = 'Musik'),
        ((SELECT uuid FROM public."Category" WHERE name = 'Sport'),
         (SELECT uuid FROM public."Workshop" WHERE name = 'Klettern')),
        ((SELECT uuid FROM public."Category" WHERE name = 'Bewegung'),
-        (SELECT uuid FROM public."Workshop" WHERE name = 'Orientalischer Tanz'));
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Orientalischer Tanz')),
+       ((SELECT uuid FROM public."Category" WHERE name = 'Kunst'),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Digitale Kunst')),
+       ((SELECT uuid FROM public."Category" WHERE name = 'Technologie'),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Robotik')),
+       ((SELECT uuid FROM public."Category" WHERE name = 'Technologie'),
+        (SELECT uuid FROM public."Workshop" WHERE name = '3D Modellierung')),
+       ((SELECT uuid FROM public."Category" WHERE name = 'Kunst'),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Fotografie')),
+       ((SELECT uuid FROM public."Category" WHERE name = 'Technologie'),
+        (SELECT uuid FROM public."Workshop" WHERE name = 'Programmieren')),
+       ((SELECT uuid FROM public."Category" WHERE name = 'Technologie'),
+        (SELECT uuid FROM public."Workshop" WHERE name = '3D Modellierung'));
 
 -- SEEDING DATA INTO SUBSCRIPTION
 INSERT INTO public."Subscription" (student_id, workshop_id)
@@ -71,8 +95,8 @@ VALUES ((SELECT uuid FROM public."Workshop" WHERE name = 'Akustik und Singen'),
         (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'REWO')),
        ((SELECT uuid FROM public."Workshop" WHERE name = 'Orientalischer Tanz'),
         (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'ROMO')),
-        ((SELECT uuid FROM public."Workshop" WHERE name = 'Orientalischer Tanz'),
-            (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'SCHH'));
+       ((SELECT uuid FROM public."Workshop" WHERE name = 'Orientalischer Tanz'),
+        (SELECT uuid FROM public."Teacher" WHERE abbreviation = 'SCHH'));
 
 -- SEEDING DATA INTO DAY
 INSERT INTO public."Day" (start_time, end_time, workshop_id, date)

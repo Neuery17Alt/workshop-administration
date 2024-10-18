@@ -27,7 +27,7 @@ module.exports = {
                     700: '#525252',
                     800: '#464646',
                     900: '#3d3d3d',
-                    950: '#292929'
+                    950: '#131313',
                 },
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
